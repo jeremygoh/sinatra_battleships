@@ -1,0 +1,5 @@
+<% if @@game.players_placed_ships? %>
+	<p>Let the games <a href="/game">begin!</a></p>
+<% else %>
+	<p>The other player hasn't placed their ship yet. <a href="/holding_area">Refresh</a> this page to check the status</p>
+<% end %>

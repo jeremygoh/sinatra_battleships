@@ -9,9 +9,8 @@ def initialize(board, target_board, ships)
 
 end
 
-def shoot
+def shoot(coordinate)
 	puts "Where would you like to shoot?" #
-	coordinate = gets.chomp
 	@target.shoot(coordinate)
 end
 

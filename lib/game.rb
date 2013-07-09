@@ -1,5 +1,5 @@
 class Game
-
+attr_accessor :turn
 
 #this method determines who goes first. 1 or 2 and sets it to an instance variable
 
@@ -9,7 +9,9 @@ def finished?
 	$p1.ships.all?{|ship| ship.sunk?} || $p2.ships.all?{|ship| ship.sunk?}
 end
 
-
+def players_placed_ships?
+	$p1.all_ships_placed? && $p2.all_ships_placed?
+end
 
 def winner
 	return "Player 1" if $p2.ships.all?{|ship| ship.sunk?}
@@ -25,8 +27,8 @@ def set_up
 	p1_target = p2_board
 	p2_target = p1_board
 	#made p1 and p2 class variables
-	# $p1 = Player.new(p1_board, p1_target, p1_ships)
-	# $p2 = Player.new(p2_board, p2_target, p2_ships)
+	$p1 = Player.new(p1_board, p1_target, p1_ships)
+	$p2 = Player.new(p2_board, p2_target, p2_ships)
 	# puts "P1, place your ships!"
 	# puts ""
 	# @p1.place_ships
@@ -34,13 +36,11 @@ def set_up
 	# puts "P2, place your ships!"
 	# puts ""
 	# @p2.place_ships
-
-	[Player.new(p1_board, p1_target, p1_ships), Player.new(p2_board, p2_target, p2_ships)]
 end
 
 
 def who_goes_first
-	if rand(1) == 1
+	if rand(2) == 1
 		@turn = 1
 	else
 		@turn =2

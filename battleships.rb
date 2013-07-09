@@ -13,6 +13,7 @@ enable :sessions
 
 @@game= Game.new
 @@game.set_up
+@@game.who_goes_first
 
 get '/' do
 	erb :index
@@ -30,6 +31,7 @@ get '/reset_game' do
 	session.clear
 	@@player_count = 0
 	redirect '/'
+	@@game=Game.new
 end
 
 get '/place_ships' do
@@ -55,24 +57,37 @@ post '/place_ships' do
 
 		if session[:player_number] == 1 && $p1.all_ships_placed?
 			@@players_who_have_placed_ships += 1
-			redirect '/game'
+			redirect '/holding_area'
 		elsif session[:player_number] == 2 && $p2.all_ships_placed?
 			@@players_who_have_placed_ships += 1
-			redirect '/game'
+			redirect '/holding_area'
 		else
 			session[:message] = "There was a problem with your placement. Check that you have placed your ships logically and within the board."
-			##get rid of the above message if it wo
+			##get rid of the above message if it works?
 			redirect '/place_ships'
 		end		
 
 
 end
 
-get "/game" do
-	erb :game
-	
+get '/holding_area' do
+	erb :holding_area
 end
 
+get "/game" do
+	erb :game
+end
+
+post "/game" do
+	if session[:player_number] == 1 
+		$p1.shoot(params[:shoot_coordinate])
+		@@game.turn+=1
+	elsif session[:player_number] == 2 
+		$p2.shoot(params[:shoot_coordinate])
+		@@game.turn+=1	
+	end
+	redirect "/game"
+end
 
 	##if there is some error in setting coordinates, ask for them again
 	##otherwise, go to game page
