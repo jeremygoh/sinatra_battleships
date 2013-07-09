@@ -57,23 +57,22 @@ attr_accessor :occupied, :misses, :hits
 #########
 	def shoot(coordinate)
 		if !shoot_coordinate_ok?(coordinate)
-			puts "That shot was so bad, you missed the board! Invalid coordinate."
+			"That shot was so bad, you missed the board! Invalid coordinate."
 		elsif @misses.include?(coordinate) || @hits.include?(coordinate)
-			puts "No change. You already targeted that square!"
+			"No change. You already targeted that square!"
 		elsif @occupied.include?(coordinate)
 			@hits << coordinate
 			ship = ship_in_coordinate(coordinate)
 			ship.hit!
 			change_coordinate_to_hit([coordinate])
 			if !ship.sunk?
-				puts "HIT"
+				"HIT"
 			else
-				puts "Sunk a ship!"
+				"Sunk a ship!"
 			end
 		else
 			@misses << coordinate
-			puts "MISS!"
-			puts ""
+			"MISS!"
 		end
 	end
 

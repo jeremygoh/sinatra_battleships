@@ -8,9 +8,7 @@ require_relative './lib/targetboard.rb'
 enable :sessions
 
 @@player_count ||=0
-
 @@players_who_have_placed_ships = 0 
-
 @@game= Game.new
 @@game.set_up
 @@game.who_goes_first
@@ -80,10 +78,10 @@ end
 
 post "/game" do
 	if session[:player_number] == 1 
-		$p1.shoot(params[:shoot_coordinate])
+		session[:message1] = $p1.shoot(params[:shoot_coordinate])
 		@@game.turn+=1
 	elsif session[:player_number] == 2 
-		$p2.shoot(params[:shoot_coordinate])
+		session[:message1] = $p2.shoot(params[:shoot_coordinate])
 		@@game.turn+=1	
 	end
 	redirect "/game"

@@ -1,3 +1,6 @@
+<%if session[:message1] %>
+	<h3><%= session[:message1] %></h3>
+<% end %>
 <h2>Your Board</h2>
 <% if session[:player_number] == 1 %>
 <%= $p1.show_own_board %>
@@ -12,7 +15,7 @@
 <% else %>
 		<% if (session[:player_number] == 1 && @@game.turn % 2 != 0) || (session[:player_number] == 2 && @@game.turn % 2 ==0) %>
 		<form action="/game" method = "post">
-			<p>Where do you want to shoot? <input type="text" maxlength="2" name="shoot_coordinate" />
+			<p>Where do you want to shoot? <input type="text" maxlength="3" name="shoot_coordinate" />
 			<input type="submit" name="submit" />
 		</form>
 		<% else %>
