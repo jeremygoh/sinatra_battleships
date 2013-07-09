@@ -1,0 +1,20 @@
+<h1>Welcome to Battleships! <%= session[:player_name] if session[:player_name] %></h1>
+<p>There are currently <%= @@player_count %> players waiting to play.</p>
+
+<% if @@player_count < 2 && !session[:player_name] %>
+<div id="form">
+<form action="/" method="post">
+	<fieldset>
+		<legend> Sign Up to Play!</legend>
+		<p>Name: <input type="text" size ="30" name="player_name" /></p>
+		<input type="submit" value="Add me as a player" />
+	</fieldset>
+</form>
+</div>
+<% elsif @@player_count < 2 %>
+<p>Waiting for another player.<p>
+<p>Please <a href="/">refresh</a> this page to check if the game is ready to begin.<p>
+<% else %>
+<p>There are now enough players to start the game!</p>
+<a href="place_ships">START GAME</a>
+<% end %>

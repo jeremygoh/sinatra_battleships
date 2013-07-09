@@ -1,0 +1,29 @@
+<!--if ships haven't been placed yet, show form
+##once ships have been placed, post-->
+
+<h1>The game is starting...</h1>
+<p><%= session[:player_name] %>, place your ships!
+<form action="place_ships" method ="post">
+
+<p>Aircraft Carrier:  
+<input name="aircraft_coordinate1" type="text" maxlength="2" size="2"/><input name="aircraft_coordinate2" type="text" maxlength="2" size="2" /><input name="aircraft_coordinate3" type="text" maxlength="2" size="2" /><input name="aircraft_coordinate4" type="text" maxlength="2" size="2"/><input name="aircraft_coordinate5" type="text" maxlength="2" size="2"/></p>
+
+<p>Battleship:  
+<input name="battleship_coordinate1" type="text" maxlength="2" size="2"/><input name="battleship_coordinate2" type="text" maxlength="2" size="2" /><input name="battleship_coordinate3" type="text" maxlength="2" size="2" /><input name="battleship_coordinate4" type="text" maxlength="2" size="2"/>
+</p>
+
+<p>Submarine:  
+<input name="submarine_coordinate1" type="text" maxlength="2" size="2"/><input name="submarine_coordinate2" type="text" maxlength="2" size="2" /><input name="submarine_coordinate3" type="text" maxlength="2" size="2" />
+</p>
+
+<p>Destroyer:  
+<input name="destroyer_coordinate1" type="text" maxlength="2" size="2"/><input name="destroyer_coordinate2" type="text" maxlength="2" size="2" /><input name="destroyer_coordinate3" type="text" maxlength="2" size="2" />
+</p>
+
+<p>Submarine:  
+<input name="patrolboat_coordinate1" type="text" maxlength="2" size="2"/><input name="patrolboat_coordinate2" type="text" maxlength="2" size="2" />
+</p>
+
+<input type="submit" name="Place Ships" />
+
+</form>
