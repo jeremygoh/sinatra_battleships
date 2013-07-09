@@ -106,8 +106,8 @@ attr_accessor :occupied, :misses, :hits
 					@occupied << coordinate
 				}
 				apply_coordinates_to_grid(coordinates)
-			else
-				puts "Problem setting coordinates. There are either insufficient coordinates, they are invalid or are already occupied!"
+			# else
+			# 	puts "Problem setting coordinates. There are either insufficient coordinates, they are invalid or are already occupied!"
 			end
 	end
 

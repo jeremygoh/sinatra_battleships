@@ -1,4 +1,4 @@
-<h1>Welcome to Battleships! <%= session[:player_name] if session[:player_name] %></h1>
+<h1>Welcome to Battleships!</h1>
 <p>There are currently <%= @@player_count %> players waiting to play.</p>
 
 <% if @@player_count < 2 && !session[:player_name] %>

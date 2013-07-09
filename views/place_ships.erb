@@ -2,7 +2,15 @@
 ##once ships have been placed, post-->
 
 <h1>The game is starting...</h1>
-<p><%= session[:player_name] %>, place your ships!
+<p><%= session[:player_name] %>, you are Player <%=session[:player_number] %></p>
+<% if session[:message] %>
+	<p><%= session[:message] %></p>
+<% else %>
+	<p>Please place your ships within the board A-K and 1-10!</p>
+<% end %>
+
+<!--display board -->
+
 <form action="place_ships" method ="post">
 
 <p>Aircraft Carrier:  

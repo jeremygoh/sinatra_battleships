@@ -15,19 +15,22 @@ def shoot
 	@target.shoot(coordinate)
 end
 
-def place_ships
+def place_ships(allcoordinates)
+	allcoordinates = allcoordinates.to_enum
 	@ships.each{|ship|
-		while !ship.location_set?
-		puts @board.grid.inspect
-		puts ""
-		puts "Where would you like to play your #{ship.class} of length #{ship.length}?" 
-		puts "Inputs format is A1,A2,A3 etc."
-		puts ""
-		coordinates = gets.chomp.split(",").to_a
-		@board.place(ship, coordinates)
-		end
+		@board.place(ship, allcoordinates.next)
 		}
-	
+end
+
+def all_ships_placed?
+	flag = true
+	@ships.each do |ship|
+		if !ship.location_set?
+			flag=false
+			break
+		end
+	end
+	flag
 end
 
 

@@ -1,0 +1,13 @@
+<h2>Your Board</h2>
+<% if session[:player_number] == 1 %>
+<%= $p1.show_own_board %>
+<% else %>
+<%= $p2.show_own_board %>
+<% end %>
+
+<h2>Target Board</h2>
+<% if session[:player_number] == 1 %>
+<%= $p1.show_target_board %>
+<% else %>
+<%= $p2.show_target_board %>
+<% end %>
