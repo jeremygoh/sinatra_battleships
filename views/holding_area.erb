@@ -1,5 +1,8 @@
-<% if @@game.players_placed_ships? %>
-	<p>Let the games <a href="/game">begin!</a></p>
-<% else %>
-	<p>The other player hasn't placed their ship yet. <a href="/holding_area">Refresh</a> this page to check the status</p>
-<% end %>
+<div class="container" id= "holding-area-button">
+		<% if @@game.players_placed_ships? %>
+			<button class="btn btn-success" style="text-align:center;"><a href="/game">Start!</a></button>
+		<% else %>
+			<p>The other player hasn't placed their ship yet. <a href="/holding_area" style="text-decoration:underline;">Refresh</a> this page to check the status</p>
+		<% end %>
+
+</div>

@@ -1,39 +1,48 @@
-<div class="row">
-	<div class="span7 offset1">
-
-			<%if flash[:shot_status] %>
-				<h3><%= flash[:shot_status] %></h3>
-			<% end %>
-			<h2>Your Board</h2>
-			<% if session[:player_number] == 1 %>
-			<%= $p1.show_own_board %>
-			<% else %>
-			<%= $p2.show_own_board %>
-			<% end %>
-
-
-			<% if @@game.finished? %>
-			<p>Game is now over! The winner is <%= @@game.winner %>!</p>
-
-			<% else %>
-					<% if (session[:player_number] == 1 && @@game.turn % 2 != 0) || (session[:player_number] == 2 && @@game.turn % 2 ==0) %>
-					<form action="/game" method = "post">
-						Where do you want to shoot? <input type="text" maxlength="3" name="shoot_coordinate" />
-						<input type="submit" name="submit" />
-					</form>
-					<% else %>
-					<p>It's not your turn. Why don't you <a href="/game">refresh</a> the page.</p>
-					<% end %>
-			<% end %>		
-
-			<h2>Target Board</h2>
-			<% if session[:player_number] == 1 %>
-			<%= $p1.show_target_board %>
-			<% else %>
-			<%= $p2.show_target_board %>
-			<% end %>
-
-
-	</div>
+<div class="span12">	
+	<%if flash[:shot_status] %>
+				<div class="alert">
+	 				<button type="button" class="close" data-dismiss="alert">&times;</button>
+	 			 	<strong><%= flash[:shot_status] %></strong>
+				</div>
+	<% end %>
 </div>
 
+
+<div class="container">
+	<div class="row">
+		<div class="span7 offset1">
+
+				
+				<h2>Your Board</h2>
+				<% if session[:player_number] == 1 %>
+				<p><%= $p1.show_own_board %></p>
+				<% else %>
+				<p><%= $p2.show_own_board %></p>
+				<% end %>
+
+
+				<% if @@game.finished? %>
+				<p>Game is now over! The winner is <%= @@game.winner %>!</p>
+
+				<% else %>
+						<% if (session[:player_number] == 1 && @@game.turn % 2 != 0) || (session[:player_number] == 2 && @@game.turn % 2 ==0) %>
+						<form action="/game" method = "post">
+							Where do you want to shoot? <input type="text" maxlength="3" name="shoot_coordinate" />
+							<input type="submit" name="submit" />
+						</form>
+						<% else %>
+						<p>It's not your turn. Why don't you <a href="/game">refresh</a> the page.</p>
+						<% end %>
+				<% end %>		
+
+				<h2>Target Board</h2>
+				<% if session[:player_number] == 1 %>
+				<p><%= $p1.show_target_board %></p>
+				<% else %>
+				<p><%= $p2.show_target_board %></p>
+				<% end %>
+
+
+		</div>
+	</div>
+</div>

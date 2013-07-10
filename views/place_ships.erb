@@ -1,37 +1,69 @@
 <!--if ships haven't been placed yet, show form
 ##once ships have been placed, post-->
+<div class="span12">	
+	<% if flash[:placement_message] %>
+				<div class="alert">
+	 				<button type="button" class="close" data-dismiss="alert">&times;</button>
+	 			 	<strong><%= flash[:placement_message] %></strong>
+				</div>
+	<% end %>
+</div>
 
-<h1>The game is starting...</h1>
-<p><%= session[:player_name] %>, you are Player <%=session[:player_number] %></p>
-<% if session[:message] %>
-	<p><%= session[:message] %></p>
-<% else %>
-	<p>Please place your ships within the board A-K and 1-10!</p>
-<% end %>
+<div class="container">
+	<h1>The game is starting...</h1>
+	<div class="place-ships-body">
+			<p><%= session[:player_name] %>, you are Player <%=session[:player_number] %></p>
+		
+				<p>Please place your ships within the board A-K and 1-10!</p>
+		
 
-<!--display board -->
+			<!--display board -->
 
-<form action="place_ships" method ="post">
+			<div class="place-ships-form">
+				<form class="form-horizontal" action="place_ships" method ="post">
 
-<p>Aircraft Carrier:  
-<input name="aircraft_coordinate1" type="text" maxlength="3" size="3"/><input name="aircraft_coordinate2" type="text" maxlength="3" size="3" /><input name="aircraft_coordinate3" type="text" maxlength="3" size="3" /><input name="aircraft_coordinate4" type="text" maxlength="3" size="3"/><input name="aircraft_coordinate5" type="text" maxlength="3" size="3"/></p>
+				<div class="control-group">
+				<label class="control-label">Aircraft Carrier:</label>
+					<div class="controls">
+					<input name="aircraft_coordinate1" type="text" maxlength="3" size="3"/><input name="aircraft_coordinate2" type="text" maxlength="3" size="3" /><input name="aircraft_coordinate3" type="text" maxlength="3" size="3" /><input name="aircraft_coordinate4" type="text" maxlength="3" size="3"/><input name="aircraft_coordinate5" type="text" maxlength="3" size="3"/>
+					</div>
+				</div>
 
-<p>Battleship:  
-<input name="battleship_coordinate1" type="text" maxlength="3" size="3"/><input name="battleship_coordinate2" type="text" maxlength="3" size="3" /><input name="battleship_coordinate3" type="text" maxlength="3" size="3" /><input name="battleship_coordinate4" type="text" maxlength="3" size="3"/>
-</p>
+				<div class="control-group">
+				<label class="control-label">Battleship:</label>
+					<div class="controls">
+						<input name="battleship_coordinate1" type="text" maxlength="3" size="3"/><input name="battleship_coordinate2" type="text" maxlength="3" size="3" /><input name="battleship_coordinate3" type="text" maxlength="3" size="3" /><input name="battleship_coordinate4" type="text" maxlength="3" size="3"/>
+					</div>
+				</div>
 
-<p>Submarine:  
-<input name="submarine_coordinate1" type="text" maxlength="3" size="3"/><input name="submarine_coordinate2" type="text" maxlength="3" size="3" /><input name="submarine_coordinate3" type="text" maxlength="3" size="3" />
-</p>
 
-<p>Destroyer:  
-<input name="destroyer_coordinate1" type="text" maxlength="3" size="3"/><input name="destroyer_coordinate2" type="text" maxlength="3" size="3" /><input name="destroyer_coordinate3" type="text" maxlength="3" size="3" />
-</p>
+				<div class="control-group">
+				<label class="control-label">Submarine:</label>
+					<div class="controls">
+						<input name="submarine_coordinate1" type="text" maxlength="3" size="3"/><input name="submarine_coordinate2" type="text" maxlength="3" size="3" /><input name="submarine_coordinate3" type="text" maxlength="3" size="3" />
+					</div>
+				</div>
+				
 
-<p>Submarine:  
-<input name="patrolboat_coordinate1" type="text" maxlength="3" size="3"/><input name="patrolboat_coordinate2" type="text" maxlength="3" size="3" />
-</p>
+				<div class="control-group">
+				<label class="control-label">Destroyer:</label>
+					<div class="controls">
+						<input name="destroyer_coordinate1" type="text" maxlength="3" size="3"/><input name="destroyer_coordinate2" type="text" maxlength="3" size="3" /><input name="destroyer_coordinate3" type="text" maxlength="3" size="3" />
+					</div>
+				</div>
 
-<input type="submit" name="Place Ships" />
+				<div class="control-group">
+				<label class="control-label">Patrol Boat:</label>
+					<div class="controls">
+							<input name="patrolboat_coordinate1" type="text" maxlength="3" size="3"/><input name="patrolboat_coordinate2" type="text" maxlength="3" size="3" />
+					</div>
+				</div>
 
-</form>
+				</div>
+
+				<div class="place-ships-button">
+				<button type="submit" class="btn"/>Place your ships</button>
+
+				</form>
+	</div>
+</div>

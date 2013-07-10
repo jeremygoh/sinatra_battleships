@@ -1,3 +1,48 @@
+body {
+background-color: #3d667c;
+}
+
+h1{
+	  color: #E1E6EB;
+
+}
+
+a {
+ color: white;
+}
+
+p {
+  font-size: 14px;
+  font-family: "Helvetica";
+  text-align: center ;
+  color: #E1E6EB;
+  margin-top: 10px;
+  margin-bottom: -10px;
+
+}
+
+label{
+
+	  color: #E1E6EB;
+	  font-family: "Helvetica";
+
+}
+
+#holding-area-button{
+						text-align: center;
+						margin-top: 200px;
+}
+
+#holding-area-button button{
+					
+						width: 150px;
+						height: 30px;
+}
+
+.place-ships-body{
+					margin-top: 50px;
+}
+
 #sign-up{
 
 			padding-top: 20px;
@@ -7,9 +52,36 @@
 
 .sign-up-btn{
 			text-align: center;
+			margin-top: 25px;
 
 }
 
 .footer{
 		margin-bottom: 10px;
 }
+
+.start-game-btn{
+				margin-top: 30px;
+
+}
+
+.place-ships-form input[type=text] { 
+					width: 30px;
+					height: 18px;
+					border-radius: 4px;
+					margin-left: 5px;
+}
+
+.place-ships-form {
+					margin-top:50px;
+					margin-left: 190px;
+
+
+}
+
+.place-ships-button{
+					margin-left: 375px;
+					margin-top: 50px;
+}
+
+

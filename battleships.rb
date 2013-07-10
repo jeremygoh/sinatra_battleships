@@ -61,7 +61,7 @@ post '/place_ships' do
 			@@players_who_have_placed_ships += 1
 			redirect '/holding_area'
 		else
-			session[:message] = "There was a problem with your placement. Check that you have placed your ships logically and within the board."
+			flash[:placement_message] = "There was a problem with your placement. Check that you have placed your ships logically and within the board."
 			##get rid of the above message if it works?
 			redirect '/place_ships'
 		end		
@@ -85,7 +85,7 @@ post "/game" do
 		flash[:shot_status] = $p2.shoot(params[:shoot_coordinate])
 		@@game.turn+=1	
 	end
-	redirect "/"
+	redirect "/game"
 end
 
 	##if there is some error in setting coordinates, ask for them again
