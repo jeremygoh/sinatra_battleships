@@ -1,15 +1,37 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="/style.css" rel="stylesheet" type="text/css" media="screen" />
+
 </head>
 
 <body>
-	<%= yield %>
+
+	<div class="navbar">
+  		<div class="navbar-inner">
+		    <a class="brand" href="/">Battleships</a>
+		    <ul class="nav">
+		      <li><a href="/">Home</a></li>
+		    </ul>
+ 		 </div>
+	</div>
+
+	<div class="container">
+		<%= yield %>
+	</div>
+
 </body>
 
-<footer>
-<a href="reset_game">Reset game</a>
-</footer>
+
+	<div class="navbar navbar-fixed-bottom footer">
+		<div class="pull-right">
+			<ul class="nav">
+				<a href="reset_game">Reset game</a>
+			</ul>
+		</div>
+	</div>
+	</div>
+
 </html>

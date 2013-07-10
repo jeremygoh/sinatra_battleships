@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/flash'
 require_relative './lib/board.rb'
 require_relative './lib/game.rb'
 require_relative './lib/player.rb'
@@ -78,13 +79,13 @@ end
 
 post "/game" do
 	if session[:player_number] == 1 
-		session[:message1] = $p1.shoot(params[:shoot_coordinate])
+		flash[:shot_status] = $p1.shoot(params[:shoot_coordinate])
 		@@game.turn+=1
 	elsif session[:player_number] == 2 
-		session[:message1] = $p2.shoot(params[:shoot_coordinate])
+		flash[:shot_status] = $p2.shoot(params[:shoot_coordinate])
 		@@game.turn+=1	
 	end
-	redirect "/game"
+	redirect "/"
 end
 
 	##if there is some error in setting coordinates, ask for them again

@@ -1,12 +1,15 @@
-#form{
-		width: 300px;
-		margin-top: 20px;
+#sign-up{
+
+			padding-top: 20px;
+
 
 }
 
-footer {
-	margin-top: 100px;
-	font-size: small;
-	float: right;
+.sign-up-btn{
+			text-align: center;
 
+}
+
+.footer{
+		margin-bottom: 10px;
 }
