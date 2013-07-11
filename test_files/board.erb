@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style>
+		label{
+			width: 5px;
+			height: 5px;
+			background-color: black;
+		}
+
+		label:hover{
+			background-color: red;
+		}
+
+		input[type="radio"]{
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+
+<form action="/game" method="get" name="target board">
+	<label for="A1">A1</label>
+	<input type="radio" name= "coordinate" id="A1" onclick="this.form.submit();">
+</form>
+
+
+
+<!-- <form name="FinalAccept" method="get" action="accept"><br>
+<input id="rYes" type="radio" name="YesNo" value="Yes" onclick="this.form.submit();">
+<label for="rYes">Yes</label><br>
+<input id="rNo" type="radio" name="YesNo" value="No" onclick="this.form.submit();">
+<label for="rNo">No</label><br>
+</form>
+ -->
+
+</body>
+
+</html>

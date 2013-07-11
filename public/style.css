@@ -17,6 +17,36 @@ a {
  color: white;
 }
 
+input[type="radio"]{
+  display: none;
+}
+
+label.target{
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  display: inline-block;
+  margin-left: -1px;
+  margin-right: -1px;
+  
+}
+
+div.target-row{
+  padding: 0px;
+  margin: -9px;
+}
+
+label.target.hit{
+    background-color: green;
+}
+
+label.target.miss{
+    background-color: red;
+}
+
+label.target:hover{
+    background-color: black;
+}
 
 table, tr, td{
   border: 1px solid rgba(240,240,240, 0.4);

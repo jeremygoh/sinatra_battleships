@@ -30,11 +30,7 @@
 					<p>Game is now over! The winner is <%= @@game.winner %>!</p>
 
 					<% else %>
-							<% if (session[:player_number] == 1 && @@game.turn % 2 != 0) || (session[:player_number] == 2 && @@game.turn % 2 ==0) %>
-							<form action="/game" method = "post">
-								Where do you want to shoot? <input type="text" maxlength="3" name="shoot_coordinate" />
-								<input type="submit" name="submit" />
-							</form>
+							<% if (session[:player_number] == 1 && @@game.turn % 2 != 0) || (session[:player_number] == 2 && @@game.turn % 2 ==0) %>						
 							<% else %>
 							<p>It's not your turn. Why don't you <a href="/game">refresh</a> the page.</p>
 							<% end %>
@@ -43,13 +39,30 @@
 				<div id="target-board">
 					<h2>Target Board</h2>
 					<% if session[:player_number] == 1 %>
-						<table>
+					<form action="/game" method = "post">
+						<% $coordinates.each_slice(10) do |row| %>
+							<div class="target-row">
+									<% 	row.each do |coordinate| %>
+										<label class="target<%= if $p2.board.hits.include?(coordinate); " hit"; elsif $p2.board.misses.include?(coordinate); " miss"; end%>" for="<%= coordinate %>"></label>
+										<input type="radio" id= "<%=coordinate%>" value="<%=coordinate%>" name="shoot_coordinate"  onclick="this.form.submit();">
+									<% end %>
+							</div>
+						<% end %>
+					</form>
+						<!-- <table>
 						<%= $p1.html_board($p1.show_target_board) %>
-						</table>
+						</table> -->
 					<% else %>
-						<table >
-						<%= $p2.html_board($p2.show_target_board) %>
-						</table>
+						<form action="/game" method = "post">
+						<% $coordinates.each_slice(10) do |row| %>
+							<div class="target-row">
+									<% 	row.each do |coordinate| %>
+										<label class="target<%= if $p1.board.hits.include?(coordinate); " hit"; elsif $p1.board.misses.include?(coordinate); " miss"; end%>" for="<%= coordinate %>"></label>
+										<input type="radio" id= "<%=coordinate%>" value="<%=coordinate%>" name="shoot_coordinate"  onclick="this.form.submit();">
+									<% end %>
+							</div>
+						<% end %>
+					</form>
 					<% end %>
 				</div>
 
