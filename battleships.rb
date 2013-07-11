@@ -14,6 +14,12 @@ enable :sessions
 @@game.set_up
 @@game.who_goes_first
 
+before do
+	pass if request.path_info == "/" || request.path_info == '/reset_game'
+	redirect '/' if !session[:player_name] 
+end
+
+
 get '/' do
 	erb :index
 end

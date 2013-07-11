@@ -1,21 +1,10 @@
 <style>
-@font-face {
-    font-family: "Kremlin";
-    src: url(https://dl.dropboxusercontent.com/u/89420597/kremlin.ttf) format("truetype");
-}
 
 
 
 
 
-#title {
-  font-size: 45px;
-  font-family: "Kremlin";
-  text-align: center ;
-  color: rgb( 255, 255, 255 );
-  padding-top: 8px;
-  line-height: 1.125;
-}
+
 
 
 
@@ -26,33 +15,7 @@ legend {
   
 }
 
-#ship {
-  margin: auto;
-  width: 400px;
-  height: 130px;
-}
 
-#headline {
-  font-size: 30px;
-  font-family: "Helvetica";
-  color: rgb( 255, 255, 255 );
-  font-weight: bold;
-  line-height: 1.125;
-  text-align: center;
-  z-index: 5;
-  opacity:0.4;
-  text-decoration: none;
-}
-
-#headline:hover {
-  opacity:0.8;
-}
-
-#maindiv {
-  width: 100%;
-  text-align: center;
-  padding-top: 150px;
-}
 
 form {
   font-family: "Helvetica";
@@ -69,21 +32,6 @@ form {
 
 
 
-#box {
-  border-radius: 5px;
-  font-family: "Helvetica";
-  font-size: 15px;
-  border: none;
-  height: 30px;
-  width: 197px;
-  text-align: center;
-}
-
-#input {
-  width: 200px;
-  font-size: 20px;
-  font-family: "Helvetica";
-}
 
 input {
   outline:none;
@@ -95,9 +43,11 @@ input {
   <div class="row">
 
   <div id=maindiv>
-  <embed id="ship" src="http://db.tt/lzHyje43" width="400" height="130"
+  <object id="ship" data="http://db.tt/lzHyje43" type="image/svg+xml"></object>
+
+ <!--  <embed id="ship" src="http://db.tt/lzHyje43" width="400" height="130"
   type="image/svg+xml"
-  pluginspage="http://www.adobe.com/svg/viewer/install/" />
+  pluginspage="http://www.adobe.com/svg/viewer/install/" /> -->
   <div id="title">battleships</div>
     <% if !session[:player_name] %>
       <% if @@player_count>0 %>
@@ -109,10 +59,9 @@ input {
 
   	<% if @@player_count < 2 && !session[:player_name] %>
       	<div id="sign-up">
-      	<form class="horizontal" action="/" method="post">
+      	<form action="/" method="post">
       		<fieldset>
-      			<legend class="text-center"> Sign Up to Play!</legend>
-      			<input type="text" size ="30" name="player_name" placeholder="Enter your name here"/>
+      			<input type="text" size ="30" id="name" name="player_name" style placeholder="Enter your name here"/>
       			<div class="sign-up-btn">
       				<button type="submit" class="btn"><i class="icon-user"></i> | Add me as a player</button>
       			</div>

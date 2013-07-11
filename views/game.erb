@@ -12,14 +12,18 @@
 	<div class="row">
 		<div class="span7 offset1">
 
-				
-				<h2>Your Board</h2>
-				<% if session[:player_number] == 1 %>
-				<p><%= $p1.show_own_board %></p>
-				<% else %>
-				<p><%= $p2.show_own_board %></p>
-				<% end %>
-
+				<div id="your-board">
+					<h2>Your Board</h2>
+					<% if session[:player_number] == 1 %>
+						<table border="1">
+							<%= $p1.html_board($p1.show_own_board) %>
+						</table>
+					<% else %>
+						<table border="1">
+						<%= $p2.html_board($p2.show_own_board) %>
+						</table>
+					<% end %>
+				</div>
 
 				<% if @@game.finished? %>
 				<p>Game is now over! The winner is <%= @@game.winner %>!</p>
@@ -35,12 +39,18 @@
 						<% end %>
 				<% end %>		
 
-				<h2>Target Board</h2>
-				<% if session[:player_number] == 1 %>
-				<p><%= $p1.show_target_board %></p>
-				<% else %>
-				<p><%= $p2.show_target_board %></p>
-				<% end %>
+				<div id="target-board">
+					<h2>Target Board</h2>
+					<% if session[:player_number] == 1 %>
+						<table border="1">
+						<%= $p1.html_board($p1.show_target_board) %>
+						</table>
+					<% else %>
+						<table border="1">
+						<%= $p2.html_board($p2.show_target_board) %>
+						</table>
+					<% end %>
+				</div>
 
 
 		</div>

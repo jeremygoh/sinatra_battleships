@@ -38,6 +38,24 @@ def show_own_board
 	@board.grid
 end
 
+def html_board(board_grid)
+	string= ""
+	board_grid.each do |row|
+		string += "<tr>"
+			row.each do |cell|
+				string +="<td>"
+				if cell== nil
+					string+="**"
+				else
+					string+= cell 
+				end
+				string+= "</td>"
+			end
+		string+= "</tr>"
+	end
+	string
+end
+
 def show_target_board
 	@target.show_target
 end
