@@ -47,7 +47,7 @@ def html_board(board_grid)
 				if cell== nil
 					string+="**"
 				else
-					string+= cell 
+					string+= cell.to_s 
 				end
 				string+= "</td>"
 			end
