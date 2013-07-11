@@ -39,6 +39,8 @@ get '/reset_game' do
 	@@player_count = 0
 	redirect '/'
 	@@game=Game.new
+	@@game.set_up
+	@@game.who_goes_first
 end
 
 get '/place_ships' do

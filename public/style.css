@@ -46,6 +46,7 @@ label.target.miss{
 
 label.target:hover{
     background-color: black;
+    
 }
 
 table, tr, td{
@@ -208,3 +209,37 @@ label{
   font-family: "Helvetica";
 }
 
+/*own board*/
+
+
+label.own{
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  display: inline-block;
+  margin-left: -1px;
+  margin-right: -1px;
+  
+}
+
+div.own-row{
+  padding: 0px;
+  margin: -9px;
+}
+
+label.own.hit{
+    background-color: black;
+}
+
+label.own.occupied{
+    background-color: orange;
+}
+
+div.own-grid{
+  margin-left: 11px;
+}
+
+
+form.target-grid{
+    margin-left: 11px;
+}

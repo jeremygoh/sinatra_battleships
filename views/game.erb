@@ -14,14 +14,33 @@
 
 				<div id="your-board">
 					<h2>Your Board</h2>
+					<div style="margin-bottom: 30px;">White is empty, orange is occupied, black is hit</div>
+					<div class="own-grid">
 					<% if session[:player_number] == 1 %>
-						<table>
+						<% $p1.show_own_board.each do |row| %>
+							<div class="own-row">
+									<% 	row.each do |coordinate| %>
+										<label class="own<%= if coordinate == 0; " occupied"; elsif coordinate == 1; " hit"; elsif coordinate="**";" empty" end%>"></label>
+									<% end %>
+							</div>
+						<% end %>
+					</div>
+
+
+
+						<!-- <table>
 							<%= $p1.html_board($p1.show_own_board) %>
-						</table>
+
+						</table> -->
 					<% else %>
-						<table>
-						<%= $p2.html_board($p2.show_own_board) %>
-						</table>
+						<% $p2.show_own_board.each do |row| %>
+							<div class="own-row">
+									<% 	row.each do |coordinate| %>
+										<label class="own<%= if coordinate == 0; " occupied"; elsif coordinate == 1; " hit"; elsif coordinate="**";" empty" end%>"></label>
+									<% end %>
+							</div>
+						<% end %>
+					</div>
 					<% end %>
 				</div>
 
@@ -30,21 +49,24 @@
 					<p>Game is now over! The winner is <%= @@game.winner %>!</p>
 
 					<% else %>
-							<% if (session[:player_number] == 1 && @@game.turn % 2 != 0) || (session[:player_number] == 2 && @@game.turn % 2 ==0) %>						
+							<% if (session[:player_number] == 1 && @@game.turn % 2 != 0) || (session[:player_number] == 2 && @@game.turn % 2 ==0) %>	
+							<div>Take a shot!</div>					
 							<% else %>
-							<p>It's not your turn. Why don't you <a href="/game">refresh</a> the page.</p>
+							<div>It's not your turn. Why don't you <a href="/game">refresh</a> the page.</div>
 							<% end %>
 					<% end %>		
 				</div>
 				<div id="target-board">
 					<h2>Target Board</h2>
+					<div style="margin-bottom: 30px">White squares haven't been targeted. Green squares are hits, reds are misses.</div>
 					<% if session[:player_number] == 1 %>
-					<form action="/game" method = "post">
+
+					<form action="/game" method = "post" class="target-grid">
 						<% $coordinates.each_slice(10) do |row| %>
 							<div class="target-row">
 									<% 	row.each do |coordinate| %>
 										<label class="target<%= if $p2.board.hits.include?(coordinate); " hit"; elsif $p2.board.misses.include?(coordinate); " miss"; end%>" for="<%= coordinate %>"></label>
-										<input type="radio" id= "<%=coordinate%>" value="<%=coordinate%>" name="shoot_coordinate"  onclick="this.form.submit();">
+										<input type="radio" <%= if @@game.turn % 2 == 0; "disabled "; end %> id= "<%=coordinate%>" value="<%=coordinate%>" name="shoot_coordinate"  onclick="this.form.submit();">
 									<% end %>
 							</div>
 						<% end %>
@@ -53,12 +75,13 @@
 						<%= $p1.html_board($p1.show_target_board) %>
 						</table> -->
 					<% else %>
-						<form action="/game" method = "post">
+
+						<form action="/game" method = "post" class="target-grid">
 						<% $coordinates.each_slice(10) do |row| %>
 							<div class="target-row">
 									<% 	row.each do |coordinate| %>
 										<label class="target<%= if $p1.board.hits.include?(coordinate); " hit"; elsif $p1.board.misses.include?(coordinate); " miss"; end%>" for="<%= coordinate %>"></label>
-										<input type="radio" id= "<%=coordinate%>" value="<%=coordinate%>" name="shoot_coordinate"  onclick="this.form.submit();">
+										<input type="radio" <%= if @@game.turn % 2 != 0; "disabled "; end %>id= "<%=coordinate%>" value="<%=coordinate%>" name="shoot_coordinate"  onclick="this.form.submit();">
 									<% end %>
 							</div>
 						<% end %>
