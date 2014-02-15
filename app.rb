@@ -1,10 +1,10 @@
 require 'sinatra'
 require 'sinatra/flash'
-require_relative './lib/board.rb'
-require_relative './lib/game.rb'
-require_relative './lib/player.rb'
-require_relative './lib/ship.rb'
-require_relative './lib/targetboard.rb'
+require'./lib/board.rb'
+require './lib/game.rb'
+require './lib/player.rb'
+require './lib/ship.rb'
+require './lib/targetboard.rb'
 
 enable :sessions
 
