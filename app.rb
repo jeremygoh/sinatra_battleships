@@ -6,7 +6,10 @@ require './lib/player.rb'
 require './lib/ship.rb'
 require './lib/targetboard.rb'
 
-enable :sessions
+configure do
+  # enable :sessions
+  use Rack::Session::Cookie, :expire_after => 2592000
+end
 
 @@player_count ||=0
 @@players_who_have_placed_ships = 0
